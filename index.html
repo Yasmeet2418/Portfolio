@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yashmeet — 2D Animator & Motion Designer Portfolio</title>
+  <meta name="description" content="Portfolio of Yashmeet, a 2D Animator, Motion Designer, and Video Editor crafting playful, impactful visuals and storytelling.">
+  
+  <!-- Google Fonts: Syne, Plus Jakarta Sans, Kalam for handwritten stickers, Caveat for doodles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body class="dark-theme">
+  <!-- Custom Cursor & Trail Canvas -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+  <canvas id="doodleCanvas" class="doodle-canvas"></canvas>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="ambient-glow glow-purple"></div>
+  <div class="ambient-glow glow-lime"></div>
+  <div class="ambient-glow glow-cyan"></div>
+
+  <!-- Sound Toggle Control (Floating) -->
+  <button id="soundToggle" class="sound-toggle-btn" aria-label="Toggle sound effects" title="Toggle audio feedback">
+    <span class="sound-icon">🔊</span>
+    <span class="sound-label">SFX: ON</span>
+  </button>
+
+  <!-- Sticky Header / Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo" id="siteLogo">
+        <span class="logo-accent">YASH</span>MEET<span class="logo-dot">.</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="cta-pill-sm">Let's Talk</a>
+        <button class="menu-btn" id="menuToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="logo"><span class="logo-accent">YASH</span>MEET<span class="logo-dot">.</span></span>
+      <button class="close-drawer-btn" id="closeDrawer">&times;</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#home" class="drawer-item">Home</a>
+      <a href="#showreel" class="drawer-item">Showreel</a>
+      <a href="#projects" class="drawer-item">Projects</a>
+      <a href="#skills" class="drawer-item">Skills</a>
+      <a href="#about" class="drawer-item">About</a>
+      <a href="#contact" class="drawer-item">Contact</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <!-- Handwritten intro doodle -->
+          <div class="doodle-intro">
+            <span class="handwritten-text">Hey, I'm</span>
+            <svg class="curved-arrow" width="48" height="32" viewBox="0 0 48 32" fill="none">
+              <path d="M4 4 C14 26, 32 28, 44 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
+              <path d="M38 18 L45 24 L39 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Giant Headline with Lime Paint Brush Effect -->
+          <div class="title-wrapper">
+            <h1 class="hero-title">YASHMEET</h1>
+            <div class="lime-brush-stroke"></div>
+            
+            <!-- Speech Bubble Sticker: LET'S CREATE SOMETHING AWESOME! -->
+            <div class="speech-bubble-sticker floating-slow">
+              <span>LET'S CREATE<br>SOMETHING<br>AWESOME!</span>
+              <div class="bubble-tail"></div>
+              <div class="sticker-shine"></div>
+            </div>
+          </div>
+
+          <!-- Subtitle -->
+          <p class="hero-subtitle">
+            <span class="highlight">2D Animator</span> • 
+            <span class="highlight">Motion Designer</span> • 
+            <span class="highlight">Video Editor</span>
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <button class="btn btn-lime" id="openShowreelHero" data-sound="pop">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span>Watch Showreel</span>
+            </button>
+
+            <a href="#projects" class="btn btn-dark" data-sound="swoosh">
+              <span>View Projects</span>
+              <span class="arrow-up-right">↗</span>
+            </a>
+          </div>
+
+          <!-- Interactive Scroll Indicator -->
+          <div class="scroll-indicator-container">
+            <a href="#showreel" class="scroll-down-badge" data-sound="tick">
+              <div class="mouse-icon">
+                <span class="mouse-wheel"></span>
+              </div>
+              <span class="scroll-text">Scroll Down</span>
+            </a>
+
+            <!-- Lightning Doodle -->
+            <div class="doodle-lightning">
+              <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
+                <path d="M14 2L3 18H12L10 30L21 14H12L14 2Z" fill="#d4ff32"/>
+              </svg>
+            </div>
+
+            <!-- Smiley Doodle -->
+            <div class="doodle-smiley">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#d4ff32" stroke-width="2.2" stroke-linecap="round">
+                <circle cx="14" cy="14" r="11"/>
+                <path d="M10 11H10.01"/>
+                <path d="M18 11H18.01"/>
+                <path d="M9 16.5C10.5 19 17.5 19 19 16.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Character Illustration -->
+        <div class="hero-visual" id="heroVisual">
+          <div class="character-card-container">
+            <!-- Neon Splash Backdrop -->
+            <div class="splash-aura"></div>
+            
+            <!-- Character Image -->
+            <div class="character-frame">
+              <img src="assets/hero.jpg" alt="Yashmeet - 2D Animator Avatar" class="hero-character-img" id="heroCharacterImg">
+              <div class="glare-effect"></div>
+            </div>
+
+            <!-- Floating Sticker Elements -->
+            <div class="floating-badge star-badge badge-1">✦</div>
+            <div class="floating-badge star-badge badge-2">★</div>
+            <div class="floating-badge clapper-badge">🎬 <span>Scene 01</span></div>
+            <div class="floating-badge crown-badge">👑</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SHOWREEL SECTION -->
+    <section class="section-showreel" id="showreel">
+      <div class="container">
+        <div class="showreel-card" id="showreelCard">
+          
+          <!-- Card Left Info -->
+          <div class="showreel-info">
+            <div class="showreel-header-badge">
+              <span class="sparkle-icon">✦</span>
+              <h2 class="showreel-title">SHOWREEL</h2>
+            </div>
+            
+            <p class="showreel-desc">
+              A quick glimpse of my work and my love for bringing stories to life through frame-by-frame emotion, vibrant colors, and dynamic motion.
+            </p>
+
+            <div class="showreel-meta">
+              <span class="meta-tag">4K UHD</span>
+              <span class="meta-tag">60 FPS</span>
+              <span class="meta-tag">Original Score</span>
+            </div>
+
+            <button class="watch-now-btn" id="openShowreelCard" data-sound="pop">
+              <span>Watch Now</span>
+              <span class="play-circle-sm">▶</span>
+            </button>
+          </div>
+
+          <!-- Card Right Video Thumbnail -->
+          <div class="showreel-preview" id="showreelThumbnailTrigger">
+            <div class="thumbnail-wrapper">
+              <img src="assets/showreel.jpg" alt="Yashmeet Animation Showreel Thumbnail" class="showreel-img">
+              <div class="overlay-gradient"></div>
+              
+              <!-- Center Neon Lime Play Button -->
+              <div class="pulse-play-btn" title="Click to play showreel">
+                <div class="pulse-ring"></div>
+                <div class="play-button-core">
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="#0d0f17">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="video-duration">01:48</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section class="section-projects" id="projects">
+      <div class="container">
+        
+        <!-- Section Header with Squiggle -->
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            <svg class="purple-squiggle" width="48" height="14" viewBox="0 0 48 14" fill="none">
+              <path d="M2 7C8 2, 14 12, 20 7C26 2, 32 12, 38 7C42 3, 46 9, 47 7" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="project-filters">
+            <button class="filter-chip active" data-filter="all">All Works</button>
+            <button class="filter-chip" data-filter="animation">2D Animation</button>
+            <button class="filter-chip" data-filter="motion">Motion Graphics</button>
+            <button class="filter-chip" data-filter="music">Music Videos</button>
+          </div>
+
+          <a href="#contact" class="view-all-link">
+            <span>View All Projects</span>
+            <span class="arrow-right">→</span>
+          </a>
+        </div>
+
+        <!-- Projects Grid (4 Cards matching design) -->
+        <div class="projects-grid">
+          
+          <!-- Card 1: RUN! -->
+          <div class="project-card" data-category="animation" data-project="run">
+            <div class="project-media">
+              <img src="assets/run.jpg" alt="RUN! 2D Animation Project" class="project-img" loading="lazy">
+              <div class="card-glow"></div>
+              <button class="expand-btn" aria-label="View project details" title="Open details">↗</button>
+            </div>
+            <div class="project-details">
+              <div class="project-title-row">
+                <h3 class="project-name">RUN!</h3>
+                <span class="card-arrow">↗</span>
+              </div>
+              <p class="project-category">2D Animation</p>
+            </div>
+          </div>
+
+          <!-- Card 2: DAYDREAMS -->
+          <div class="project-card" data-category="motion" data-project="daydreams">
+            <div class="project-media">
+              <img src="assets/daydreams.jpg" alt="Daydreams Motion Graphics Project" class="project-img" loading="lazy">
+              <div class="card-glow"></div>
+              <button class="expand-btn" aria-label="View project details" title="Open details">↗</button>
+            </div>
+            <div class="project-details">
+              <div class="project-title-row">
+                <h3 class="project-name">DAYDREAMS</h3>
+                <span class="card-arrow">↗</span>
+              </div>
+              <p class="project-category">Motion Graphics</p>
+            </div>
+          </div>
+
+          <!-- Card 3: LOST SIGNAL -->
+          <div class="project-card" data-category="animation" data-project="lost_signal">
+            <div class="project-media">
+              <img src="assets/lost_signal.jpg" alt="Lost Signal Animated Short Project" class="project-img" loading="lazy">
+              <div class="card-glow"></div>
+              <button class="expand-btn" aria-label="View project details" title="Open details">↗</button>
+            </div>
+            <div class="project-details">
+              <div class="project-title-row">
+                <h3 class="project-name">LOST SIGNAL</h3>
+                <span class="card-arrow">↗</span>
+              </div>
+              <p class="project-category">Animated Short</p>
+            </div>
+          </div>
+
+          <!-- Card 4: GROOVY TUNES -->
+          <div class="project-card" data-category="music" data-project="groovy_tunes">
+            <div class="project-media">
+              <img src="assets/groovy_tunes.jpg" alt="Groovy Tunes Music Video Project" class="project-img" loading="lazy">
+              <div class="card-glow"></div>
+              <button class="expand-btn" aria-label="View project details" title="Open details">↗</button>
+            </div>
+            <div class="project-details">
+              <div class="project-title-row">
+                <h3 class="project-name">GROOVY TUNES</h3>
+                <span class="card-arrow">↗</span>
+              </div>
+              <p class="project-category">Music Video</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section-skills" id="skills">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <h2 class="section-title">SKILLS</h2>
+          <svg class="purple-squiggle" width="48" height="14" viewBox="0 0 48 14" fill="none">
+            <path d="M2 7C8 2, 14 12, 20 7C26 2, 32 12, 38 7C42 3, 46 9, 47 7" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Skills Tool Grid with authentic icons & badges -->
+        <div class="skills-grid">
+          
+          <!-- Toon Boom Harmony -->
+          <div class="skill-item" data-tooltip="Toon Boom Harmony: Industry standard frame-by-frame & puppet rigging">
+            <div class="skill-icon-box box-harmony">
+              <div class="icon-glyph">H</div>
+            </div>
+            <span class="skill-name">Toon Boom<br>Harmony</span>
+            <span class="skill-level">Mastery</span>
+          </div>
+
+          <!-- Adobe After Effects -->
+          <div class="skill-item" data-tooltip="After Effects: Compositing, visual effects, and kinetic typography">
+            <div class="skill-icon-box box-ae">
+              <div class="icon-glyph">Ae</div>
+            </div>
+            <span class="skill-name">Adobe<br>After Effects</span>
+            <span class="skill-level">Advanced</span>
+          </div>
+
+          <!-- Adobe Animate -->
+          <div class="skill-item" data-tooltip="Adobe Animate: Vector character animation & frame cleanup">
+            <div class="skill-icon-box box-an">
+              <div class="icon-glyph">An</div>
+            </div>
+            <span class="skill-name">Adobe<br>Animate</span>
+            <span class="skill-level">Advanced</span>
+          </div>
+
+          <!-- Adobe Photoshop -->
+          <div class="skill-item" data-tooltip="Photoshop: Concept art, background painting & matte art">
+            <div class="skill-icon-box box-ps">
+              <div class="icon-glyph">Ps</div>
+            </div>
+            <span class="skill-name">Adobe<br>Photoshop</span>
+            <span class="skill-level">Expert</span>
+          </div>
+
+          <!-- Blender -->
+          <div class="skill-item" data-tooltip="Blender: 3D camera projection, hybrid 2D/3D grease pencil">
+            <div class="skill-icon-box box-blender">
+              <!-- Blender Logo SVG -->
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="#ea7600">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c-2.49 0-4.5-2.01-4.5-4.5S8.51 7.5 11 7.5c1.46 0 2.76.7 3.58 1.78l-1.68 1.26A2.43 2.43 0 0 0 11 9.5c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5c1.15 0 2.12-.78 2.41-1.84l2.03.54A4.5 4.5 0 0 1 11 16.5z"/>
+                <circle cx="15.5" cy="11.5" r="1.5" fill="#ea7600"/>
+              </svg>
+            </div>
+            <span class="skill-name">Blender</span>
+            <span class="skill-level">Proficient</span>
+          </div>
+
+          <!-- Premiere Pro -->
+          <div class="skill-item" data-tooltip="Premiere Pro: Editorial pacing, sound mix & color grade">
+            <div class="skill-icon-box box-pr">
+              <div class="icon-glyph">Pr</div>
+            </div>
+            <span class="skill-name">Premiere<br>Pro</span>
+            <span class="skill-level">Expert</span>
+          </div>
+
+        </div>
+
+        <!-- Decorative Doodles around skills -->
+        <div class="skills-doodles">
+          <svg class="purple-spiral" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M32 32 C38 28, 48 34, 46 44 C44 54, 28 56, 20 46 C12 36, 16 18, 30 14 C44 10, 58 22, 54 40" stroke="#7042f8" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+          <span class="doodle-cyan-marks">///</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section class="section-about" id="about">
+      <div class="container">
+        
+        <div class="about-card">
+          <!-- Left Sketch Graphic with Sticky Note -->
+          <div class="about-visual">
+            <div class="sketch-paper">
+              <!-- Sticky Note with Handwritten Mantra -->
+              <div class="sticky-note">
+                <span class="pin">📌</span>
+                <span class="sticky-text">FOCUS<br>DISCIPLINE<br>CONSISTENCY</span>
+              </div>
+
+              <!-- Sketch Art Container -->
+              <div class="sketch-portrait-wrap">
+                <div class="sketch-avatar-art">
+                  <!-- Anime Boy Ink Manga Avatar -->
+                  <div class="ink-avatar">
+                    <img src="assets/hero.jpg" alt="Yashmeet Sketch Artwork" class="ink-img">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Crown Doodle -->
+              <div class="doodle-crown">👑</div>
+            </div>
+          </div>
+
+          <!-- Right Content Info -->
+          <div class="about-info">
+            <h2 class="about-title">ABOUT ME</h2>
+            
+            <p class="about-paragraph">
+              I'm <strong>Yashmeet</strong>, a 2D Animator and Motion Designer who loves turning ideas into playful, impactful visuals. I enjoy telling stories that entertain, connect and leave a lasting impression.
+            </p>
+
+            <p class="about-paragraph secondary">
+              From dynamic action sequences to heartwarming character moments, I blend classical principles of timing and weight with cutting-edge digital pipelines. When not keyframing, I experiment with sound design and indie manga concepts.
+            </p>
+
+            <!-- Key Milestones -->
+            <div class="about-stats">
+              <div class="stat-box">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years of Experience</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">60+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">15M+</span>
+                <span class="stat-label">Views Worldwide</span>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button class="know-more-btn" id="openAboutDetailsBtn" data-sound="pop">
+              <span>Know More About Me</span>
+              <span class="circle-arrow">➔</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <section class="section-contact" id="contact">
+      <div class="container">
+        
+        <!-- Contact Form Card -->
+        <div class="contact-card">
+          <div class="contact-header">
+            <div class="section-title-wrap">
+              <h2 class="section-title">GET IN TOUCH</h2>
+              <svg class="purple-squiggle" width="48" height="14" viewBox="0 0 48 14" fill="none">
+                <path d="M2 7C8 2, 14 12, 20 7C26 2, 32 12, 38 7C42 3, 46 9, 47 7" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="contact-subtitle">
+              Have an animation project, commercial, or creative idea? Drop a line and let's craft something unforgettable.
+            </p>
+          </div>
+
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-grid">
+              
+              <!-- Name Input -->
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Name <span class="req">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon">👤</span>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Alex Rivera" required>
+                </div>
+                <span class="field-error" id="nameError"></span>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address <span class="req">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon">✉️</span>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="alex@studio.com" required>
+                </div>
+                <span class="field-error" id="emailError"></span>
+              </div>
+
+            </div>
+
+            <!-- Project Type Pills -->
+            <div class="form-group">
+              <label class="form-label">Project Type</label>
+              <div class="type-pills-row" id="projectTypeRow">
+                <button type="button" class="type-pill active" data-type="2D Animation">🎬 2D Animation</button>
+                <button type="button" class="type-pill" data-type="Motion Graphics">⚡ Motion Graphics</button>
+                <button type="button" class="type-pill" data-type="Music Video">🎵 Music Video</button>
+                <button type="button" class="type-pill" data-type="Commercial / Promo">📺 Commercial</button>
+                <button type="button" class="type-pill" data-type="Other">✨ Other</button>
+              </div>
+              <input type="hidden" id="selectedProjectType" value="2D Animation">
+            </div>
+
+            <!-- Budget Range Pills -->
+            <div class="form-group">
+              <label class="form-label">Estimated Budget</label>
+              <div class="type-pills-row" id="budgetRow">
+                <button type="button" class="type-pill" data-budget="< $2,000">&lt; $2,000</button>
+                <button type="button" class="type-pill active" data-budget="$2,000 - $5,000">$2k - $5k</button>
+                <button type="button" class="type-pill" data-budget="$5,000 - $10,000">$5k - $10k</button>
+                <button type="button" class="type-pill" data-budget="$10,000+">$10k+</button>
+              </div>
+              <input type="hidden" id="selectedBudget" value="$2,000 - $5,000">
+            </div>
+
+            <!-- Message Input -->
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Project Details <span class="req">*</span></label>
+              <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Tell me about the story, timeline, style, or references..." required></textarea>
+              <span class="field-error" id="messageError"></span>
+            </div>
+
+            <!-- Submit Button & Feedback -->
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-lime submit-btn" id="contactSubmitBtn" data-sound="pop">
+                <span class="submit-text">Send Message 🚀</span>
+                <span class="submit-spinner hidden"></span>
+              </button>
+              <span class="form-status-msg" id="formStatusMsg"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Big CTA Banner -->
+        <div class="cta-banner">
+          <div class="doodle-badge-wrap">
+            <div class="dope-speech-bubble">
+              <span class="dope-text">LET'S MAKE<br>SOMETHING DOPE!</span>
+              <div class="dope-tail"></div>
+            </div>
+          </div>
+
+          <div class="footer-contact-details">
+            <!-- Email Item with Copy Feature -->
+            <div class="contact-item" id="copyEmailTrigger" title="Click to copy email address" data-sound="pop">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span class="contact-text" id="emailText">hello@yashmeet.com</span>
+              <span class="copy-badge" id="copyBadge">Copy</span>
+            </div>
+
+            <!-- Location Item -->
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="contact-text">India 🇮🇳</span>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" title="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+
+            <a href="https://dribbble.com" target="_blank" rel="noopener" class="social-link" title="Dribbble">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/>
+                <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/>
+                <path d="M8.5 2.5a16.8 16.8 0 0 1 8.2 16.5"/>
+              </svg>
+            </a>
+
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link" title="YouTube">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+              </svg>
+            </a>
+
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Bottom Peekaboo Mascot Doodle (reacts to mouse) -->
+          <div class="peek-mascot" id="peekMascot" title="Hey there!">
+            <div class="mascot-face">
+              <span class="mascot-eyes">ᵔᴥᵔ</span>
+              <span class="mascot-wave">✌️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Yashmeet. Handcrafted with passion, frames, and rhythm.</p>
+          <a href="#home" class="back-to-top">Back to Top ↑</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- SHOWREEL VIDEO MODAL -->
+  <div class="modal-backdrop" id="showreelModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog video-dialog">
+      <button class="modal-close-btn" id="closeShowreelModal" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3 class="modal-title">Yashmeet — Animation & Motion Reel 2026</h3>
+          <span class="modal-badge">4K • 60 FPS</span>
+        </div>
+
+        <!-- Reel View Switcher: Real Video vs Canvas Engine -->
+        <div class="reel-switcher">
+          <button class="switcher-btn active" id="switchVideoMode" data-mode="video">🎬 Real HD Reel</button>
+          <button class="switcher-btn" id="switchCanvasMode" data-mode="canvas">🎨 Interactive Canvas</button>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <!-- Real Video Frame (YouTube Sakuga Animation Reel Embed) -->
+        <div class="real-video-player active" id="realVideoPlayer">
+          <iframe 
+            id="reelIframe"
+            src=""
+            data-src="https://www.youtube-nocookie.com/embed/gW9wN_rLwA4?autoplay=1&enablejsapi=1&rel=0&modestbranding=1" 
+            title="Yashmeet Animation Showreel" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Interactive Canvas / Simulation View -->
+        <div class="canvas-video-player" id="canvasVideoPlayer">
+          <canvas id="showreelCanvas" class="reel-canvas" width="1280" height="720"></canvas>
+          
+          <div class="video-controls-overlay">
+            <button class="play-pause-btn" id="canvasPlayToggle">❚❚ Pause</button>
+            <div class="scrub-bar-wrap">
+              <div class="scrub-bar-progress" id="canvasProgressBar"></div>
+            </div>
+            <span class="time-display" id="canvasTimeDisplay">00:15 / 01:48</span>
+            <button class="fullscreen-btn" id="canvasFullscreenBtn">⛶</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <p>Showcasing cuts from <em>RUN!</em>, <em>DAYDREAMS</em>, <em>LOST SIGNAL</em>, and brand motion commissions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT CONFIRMATION SUCCESS MODAL -->
+  <div class="modal-backdrop" id="contactSuccessModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog success-dialog">
+      <button class="modal-close-btn" id="closeSuccessModal" aria-label="Close modal">&times;</button>
+      <div class="success-modal-content">
+        <div class="success-icon-badge">🎉</div>
+        <h3 class="success-title">MESSAGE SENT!</h3>
+        <p class="success-desc" id="successDesc">
+          Thanks for reaching out! Your project brief has been received. Yashmeet will review your ideas and get back to you within 24 hours.
+        </p>
+        <div class="success-summary" id="successSummary">
+          <!-- Populated dynamically -->
+        </div>
+        <button class="btn btn-lime" id="dismissSuccessBtn" style="width: 100%;">Awesome! Let's Go 🚀</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-backdrop" id="projectModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog project-dialog">
+      <button class="modal-close-btn" id="closeProjectModal" aria-label="Close modal">&times;</button>
+      
+      <div class="project-modal-content" id="projectModalContent">
+        <!-- Populated via JavaScript dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT ME DETAIL MODAL -->
+  <div class="modal-backdrop" id="aboutModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog about-dialog">
+      <button class="modal-close-btn" id="closeAboutModal" aria-label="Close modal">&times;</button>
+      
+      <div class="about-modal-content">
+        <div class="about-modal-hero">
+          <img src="assets/hero.jpg" alt="Yashmeet" class="about-modal-avatar">
+          <div>
+            <h3>Yashmeet</h3>
+            <p class="modal-subtitle">Lead 2D Animator & Motion Art Director</p>
+            <div class="about-tags">
+              <span class="tag">Tradigital Animation</span>
+              <span class="tag">Storyboarding</span>
+              <span class="tag">Visual Direction</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-modal-body">
+          <h4>My Creative Journey</h4>
+          <p>
+            I began animating by filling the margins of my school notebooks with flipbook sketches. That playful curiosity evolved into a career directing animated commercials, music videos, and cinematic shorts seen across millions of screens globally.
+          </p>
+
+          <h4>Workflow & Philosophy</h4>
+          <p>
+            Every frame should either push the narrative forward or spark genuine delight. Whether rigging puppets in Toon Boom or hand-keying high-octane anime sakuga, I treat animation as visual music where timing, anticipation, and release create magic.
+          </p>
+
+          <div class="services-offered">
+            <h4>What I Do</h4>
+            <div class="services-list">
+              <div class="service-pill">🎬 2D Character Animation</div>
+              <div class="service-pill">⚡ Kinetic Motion Graphics</div>
+              <div class="service-pill">🎨 Storyboarding & Previz</div>
+              <div class="service-pill">🎵 Music Video Direction</div>
+              <div class="service-pill">🔊 Sound Design & Timing</div>
+              <div class="service-pill">📺 Commercial Title Sequences</div>
+            </div>
+          </div>
+
+          <div class="about-cta-bar">
+            <a href="#contact" class="btn btn-lime" onclick="document.getElementById('aboutModal').classList.remove('active');">Start a Project Together 🚀</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
